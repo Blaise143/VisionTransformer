@@ -1,16 +1,17 @@
-# This is a sample Python script.
+from src.Train import train
+from src.HelperFunctions import plot_loss
+from src.VisionTransformer import VisionTransformer
 
-# Press Shift+Enter to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+if __name__ == "__main__":
+    model = VisionTransformer(
+        image_size=28,
+        patch_size=4,
+        embed_dim=8,
+        num_layers=8,
+        num_heads=4,
+        num_classes=10,
+        in_channels=1,
+    )
+    losses, accuracies = train(model)
+    plot_loss(losses, accuracies)
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
